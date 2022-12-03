@@ -1,6 +1,6 @@
 <template>
     <div>
-      <div class="h-screen w-full  flex flex-col">
+      <div class="h-screen w-full  flex flex-col pt-12">
      
 
         <div class="w-10/12 lg:w-8/12 mx-[auto] h-[auto] pt-8 text-justify">

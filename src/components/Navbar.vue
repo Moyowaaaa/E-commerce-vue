@@ -3,7 +3,7 @@ import {RouterLink} from 'vue-router'
 </script>
 
 <template>
-    <div class="bg-white text-black px-6">
+    <div class="bg-white text-black px-6 fixed w-full shadow-md">
         <div class="w-full py-4">
             <div class="flex justify-between items-center h-full">
                 <div class='pl-2 lg:pl-[2rem] cursor-pointer '>
@@ -20,7 +20,7 @@ import {RouterLink} from 'vue-router'
 
                     <RouterLink to="/store">
                         <h1 class="w-max hover:border-b-2 hover:border-[black]">
-                       Store
+                       store
                     </h1>
                     </RouterLink>
 
@@ -28,20 +28,22 @@ import {RouterLink} from 'vue-router'
 
                     <RouterLink to="/about">
                         <h1 class="w-max hover:border-b-2 hover:border-[black]">
-                        About 
+                        about 
                     </h1>
                     </RouterLink>
 
                     <RouterLink to="/contact">
                         <h1 class="w-max hover:border-b-2 hover:border-[black]">
-                       Contact
+                       contact
                     </h1>
                     </RouterLink>
-                   
 
+
+                    <RouterLink to="/cart">
                     <h1 class="w-max hover:border-b-2 hover:border-[black]">
-                       Cart
+                       cart
                     </h1>
+                    </RouterLink>
 
 
                 </div>

@@ -5,7 +5,7 @@ import Footer from '../components/Footer.vue'
 
 
 <template>
-   <div>
+   <div class="pt-12">
     <div class="w-8/12  m-[auto] h-auto flex flex-col lg:flex-row mt-[6rem]">
         <div class="w-full lg:w-6/12 lg:pr-2">
           <h2 class="mb-12 font-bold text-4xl">Contact us.</h2>

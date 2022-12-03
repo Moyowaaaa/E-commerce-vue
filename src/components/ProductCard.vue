@@ -19,8 +19,6 @@ interface Product {
 // }
 
 const props = defineProps<Product>()
-
-console.log(props.product)
 </script>
 
 <template>

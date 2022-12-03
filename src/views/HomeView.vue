@@ -26,6 +26,7 @@ import { RouterLink } from 'vue-router';
             </div>
    </div>
    <ShowcaseSection />
+
     <Subscribe />
    
   </div>

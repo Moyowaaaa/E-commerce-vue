@@ -1,4 +1,68 @@
+
+<script setup lang="ts">
+import { useRoute } from 'vue-router';
+import { useCartStore } from '@/stores/CartStore';
+const cartStore = useCartStore()
+import { ref } from 'vue';
+
+const route = useRoute()
+
+
+
+
+const url = `https://fakestoreapi.com/products/${route.params.id}`
+import axios from 'axios'
+
+interface productProps {
+    id:number,
+    title:string,
+    image:string,
+    price:number,
+    description:string,
+    category:string,
+    rating:{
+        rate:number,
+        count:number
+    }
+
+}
+
+
+let product = ref<productProps>([])
+let loading =  ref<boolean>(false)
+
+const fetch = async () => {
+    try {
+        
+        const response = await axios.get(url)
+        product.value = response.data
+   
+  
+     
+    } catch (error) {
+      
+        console.log(error)
+    }
+}
+
+console.log(loading.value)
+
+fetch()
+
+
+const addToCart = () =>{
+   cartStore.addItemToCart(product)
+}
+
+
+
+</script>
+
 <template>
+<div class="flex flex-col">
+
+    <div class="h-screen w-full" v-if="!product">Loading....</div>
+
     <div class="w-full  h-screen flex-col p-6">
         <div @click="$router.go(-1)" class="hover:border-b-2 hover:border-[black] ml-6 w-max text-3xl cursor-pointer">
         &larr;
@@ -10,7 +74,7 @@
                 <img :src="product.image" />
             </div>
 
-            <div class="w-7/12 flex flex-col gap-4 justify-center ">
+            <div class="w-7/12 flex flex-col gap-8 justify-center ">
                 <div class="w-9/12 flex flex-col">
                     <h2 class="text-3xl font-bold">{{product.title}}</h2>
                 <p class="text-xl font-bold">${{product.price}}</p>
@@ -19,67 +83,15 @@
                 </div>
               
 
-                <buttton class="py-4 px-8 border-2 border-[black] w-max">Add Item To Cart</buttton>
+                <buttton class="py-4 px-8 border-2 border-[black] w-max" @click="addToCart">Add Item To Cart</buttton>
             </div>
 
         </div>
     </div>
+</div>
+    
 </template>
 
-<script setup lang="ts">
-import { useRoute } from 'vue-router';
-
-import { ref } from 'vue';
-
-const route = useRoute()
-
-
-
-console.log(route.params.id)
-const url = `https://fakestoreapi.com/products/${route.params.id}`
-import axios from 'axios'
-
-interface productProps {
-    id:number,
-    title:string,
-    image:string,
-    price:number,
-    description:string,
-    category:string,
-    rating:ratingsProps
-
-}
-interface ratingsProps {
-    rate: number,
-    count:number,
-}
-
-let product = ref<productProps>([])
-let loading =  ref<boolean>(true)
-
-const fetch = async () => {
-    try {
-        loading.value = true
-        const response = await axios.get(url)
-        product.value = response.data
-    
-     
-    } catch (error) {
-      
-        console.log(error)
-        loading.value = false
-    }finally{
-        loading.value = false
-    }
-}
-
-console.log(loading.value)
-
-fetch()
-
-
-
-</script>
 
 <style scoped>
 
