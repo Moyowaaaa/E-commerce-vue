@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import {RouterLink} from 'vue-router'
+import { storeToRefs } from 'pinia';
+import { useCartStore } from '@/stores/CartStore';
+const cartStore = useCartStore()
+
+const {itemCount} = storeToRefs(cartStore)
 </script>
+
 
 <template>
     <div class="bg-white text-black px-6 fixed w-full shadow-md">
@@ -40,9 +46,15 @@ import {RouterLink} from 'vue-router'
 
 
                     <RouterLink to="/cart">
+                        <div class="flex gap-2 items-center">
                     <h1 class="w-max hover:border-b-2 hover:border-[black]">
-                       cart
+                       cart     
                     </h1>
+
+                    <div class="py-1 px-2    text-xs bg-black text-white rounded-full">
+                        {{itemCount}}
+                    </div>
+                    </div>
                     </RouterLink>
 
 

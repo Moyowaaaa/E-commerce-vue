@@ -7,7 +7,8 @@ interface ProductsProps {
     price:number,
     description:string,
     category:string,
-    image:any
+    image:any,
+    rating:any
 }
 
 interface Product {
@@ -18,7 +19,7 @@ interface Product {
 //     product:any
 // }
 
-const props = defineProps<Product>()
+ defineProps<Product>()
 </script>
 
 <template>

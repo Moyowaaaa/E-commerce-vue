@@ -1,15 +1,34 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia';
+import { reactive, ref } from 'vue';
 import {useCartStore} from '../stores/CartStore'
-const items = useCartStore()
+const cartStore = useCartStore()
 
-console.log(items.cart_value)
+console.log('total',cartStore.cartTotal)
+
 
 
 </script>
 
 <template>
-    <div class="h-screen">
-        {{items.totalItemsInCart}}
+    <div class="h-screen pt-24">
+
+
+        <div class="h-full w-full px-12 flex flex-col items-center justify-center gap-4" >
+          <p>Items in cart</p>
+          {{cartStore.itemCount}}
+
+          <p>Total</p>
+          {{cartStore.cartTotal}}
+        </div>
+        
+          
+
+
+          
+
+
+      
         
     </div>
 </template>

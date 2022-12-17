@@ -21,6 +21,7 @@ export const useProductStore = defineStore('product', {
         featuredProducts:[] as unknown as productProps,
         loading:false
     }),
+
     actions: {
         async getProducts() {
             this.loading = true

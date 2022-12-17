@@ -1,15 +1,21 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-const url = "https://fakestoreapi.com/products"
+import { ref, toRaw } from 'vue';
+
 import ProductCard from '../components/ProductCard.vue'
 import { useFetch } from '@/composables/useFetch';
 import { useRoute } from 'vue-router';
 import {useProductStore } from '../stores/ProductStore'
 
 const productStore = useProductStore()
+const url = "https://fakestoreapi.com/products"
 productStore.getProducts()
 
-console.log(productStore.products)
+
+
+
+//  (productStore.products)
+
+// console.log({p})
 
 
 import axios from 'axios';
@@ -18,6 +24,9 @@ const route = useRoute()
 
 let products = ref<any | null>([])
 let loading = ref<boolean>(false)
+
+
+console.log(toRaw(productStore.products))
 
 
 </script>
